@@ -7,4 +7,4 @@ assignees: uchenna631
 
 ---
 
-As a *role*, I can *capability* , so that *receive benefits*
+As a **role**, I can **capability** , so that **receive benefits**
