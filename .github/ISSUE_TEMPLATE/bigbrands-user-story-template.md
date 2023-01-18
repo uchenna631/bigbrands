@@ -1,7 +1,7 @@
 ---
 name: BIGBRANDS USER STORY TEMPLATE
 about: To create custom issues for bigbrands project
-title: User Story
+title: <User Story>
 labels: ''
 assignees: uchenna631
 
