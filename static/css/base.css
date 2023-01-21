@@ -3,16 +3,13 @@ html {
 }
 
 body {
-    /* background: url(https://github.com/uchenna631/bigbrands/blob/main/media/hero_img_1.jpg?raw=true) no-repeat center center fixed; */
+    background: url('https://github.com/uchenna631/bigbrands/blob/main/media/hero_img_1.jpg?raw=true') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Lato';
 }
 
-.hero-img-1 {
-    background-image: url('https://github.com/uchenna631/bigbrands/blob/main/media/hero_img_1.jpg?raw=true');
-}
 
 /* from Bulma */
 .icon {
