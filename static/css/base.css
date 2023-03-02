@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
 }
@@ -5,7 +9,7 @@ html {
 body {
     background: url(/media/hero-image.jpg) no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh - 164px);
+    height: calc(100vh - 16px);
     color: #555;
     font-family: 'Lato';
 }
@@ -20,35 +24,40 @@ body {
     width: 1.5rem;
 }
 
-.logo-font {
-    text-transform: uppercase;
-}
-
 .main-logo-link {
     width: fit-content;
 }
 
+.hero-text {
+    font-size: 1.5rem;
+}
+
+.header-container {
+    padding-top: 165px;
+}
+
 .shop-now-button {
-    background: black;
     color: white;
-    min-width: 260px;
+    min-width: 5vw;
+    left: 10%;
+    bottom: 10%;
 }
 
 .btn-black {
-    background: black;
+    background: #343a40;
     color: white;
 }
 
 .btn-outline-black {
     background: white;
-    color: black !important; /* use important to override link colors for <a> elements */
+    color: #343a40 !important; /* use important to override link colors for <a> elements */
     border: 1px solid black;
 }
 
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
-    background: black;
+    background: #343a40;
     color: white !important;
 }
 
@@ -216,7 +225,7 @@ input[name='q']::placeholder {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #000;
+    background-color: #343a40;
     border: 1px solid #000;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -245,7 +254,11 @@ input[name='q']::placeholder {
         top: 0;
         right: 0;
         left: 0;
-        z-index: 1030;
+        z-index: 9999;
+    }
+
+    .top-spacer {
+        height: 160px;
     }
 
     .header-container {
@@ -263,12 +276,8 @@ input[name='q']::placeholder {
         height: calc(100vh - 116px);
     }
     
-    .display-4.logo-font.text-black {
-        font-size: 2rem;
-    }
-
-    .nav-link {
-        padding: 0.15rem;
+    logo-font {
+        font-size: clamp(0.9rem, 1vw + 1rem, 2.2rem);
     }
 
     .nav-link i.fa-lg {
@@ -281,7 +290,7 @@ input[name='q']::placeholder {
     }
 
     #delivery-banner h4 {
-        font-size: .9rem;
+        font-size: 8vw;
     }
 
     .btn.btn-outline-black.rounded-0,
@@ -299,3 +308,64 @@ input[name='q']::placeholder {
         padding: .25rem .5rem !important;
     }
 }
+
+@media (max-width: 786px) {
+  
+}
+
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 540px) {
+    .header-container {
+        padding-top: 100px;
+    }
+
+    .hero-text {
+        font-size: 1.5rem;
+        padding-top: 100px;
+    }
+
+    body {
+        height: calc(100vh - 100px);
+    }
+    
+
+    .nav-link {
+        padding: 0 !important;
+    }
+
+    .navbar-toggler {
+        padding: 0;
+    }
+
+    #delivery-banner h4 {
+        font-size: .8rem;
+    }
+
+    .btn.btn-outline-black.rounded-0,
+    .btn.btn-black.rounded-0 {
+        padding: .275rem .275rem;
+    }
+
+    .btn.btn-outline-black.rounded-0.btn-lg,
+    .btn.btn-black.rounded-0.btn-lg {
+        padding: .275rem .275rem;
+        font-size: .55rem;
+    }
+
+}
+
+/* ----------------------------Footer */
+footer a {
+    color: #555;
+}
+
+/* Mail chimp */
+#mc_embed_signup{
+    background:#fff;
+    clear:left;
+    font:14px Helvetica, Arial,sans-serif;  
+    width:100%;
+}
+	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
