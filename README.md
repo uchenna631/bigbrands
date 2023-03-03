@@ -178,6 +178,10 @@ The footer and main navigation on the home page both link to the blog. The Top s
 <br>
 </details>
 
+## Media Marketing
+### Facebook page
+![Facebook page](media/readme_imgs/bigbrands-facebook.JPG)
+
 ### Features left to implement:
 * Order processing, stock tracking and order delivery.
 
