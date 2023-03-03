@@ -1,4 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+
+RATES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
 
 
 class Category(models.Model):
@@ -29,3 +33,18 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    text = models.TextField()
+    rating = models.IntegerField(choices=RATES)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f"Review by {self.name} verified purchase"

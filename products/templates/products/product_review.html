@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-header %}
+    <div class="container header-container mt-5">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container-fluid w-75">
+    <h2>{{ product.name }}</h2>
+    {% if reviews %}
+    <h3>Reviews</h3>
+    <ul>
+        {% for review in reviews %}
+        <li>
+            <p>{{ review.title }}</p>
+            <p>{{ review.text }}</p>
+            <p>{{ review.rating }}</p>
+            <p>by {{ review.user.username }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
+
+    <h3>Write a Review</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
