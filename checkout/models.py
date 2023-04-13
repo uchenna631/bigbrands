@@ -5,7 +5,8 @@ from django.db.models import Sum
 from django.conf import settings
 
 from django_countries.fields import CountryField
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from products.models import Product
 from profiles.models import UserProfile
 
@@ -57,6 +58,7 @@ class Order(models.Model):
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
+        post_save.connect(create_order_manager, sender=Order)
 
     def __str__(self):
         return self.order_number
@@ -79,3 +81,31 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
+
+
+class OrderManager(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    processed = models.BooleanField(default=False, blank=True)
+    processed_by = models.CharField(max_length=120, blank=True)
+    processed_date = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    delivered = models.BooleanField(default=False, blank=True)
+    delivered_by = models.CharField(max_length=120, blank=True)
+    delivered_date = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    status = models.CharField(max_length=80, blank=True)
+
+    def save(self, *args, **kwargs):
+        # check if it's a new instance and if processed is set
+        if not self.pk and self.processed:
+            self.processed_date = timezone.now()
+            self.processed_by = models.ForeignKey(
+                User, on_delete=models.SET_NULL)
+        if not self.pk and self.delivered:
+            self.delivery_date = timezone.now()
+            self.delivered_by = models.ForeignKey(
+                User, on_delete=models.SET_NULL)
+        super().save(*args, **kwargs)
+
+@receiver(post_save, sender=Order)
+def create_order_manager(sender, instance, created, **kwargs):
+    if created:
+        OrderManager.objects.create(order=instance)
