@@ -33,14 +33,15 @@ body {
 }
 
 .header-container {
-    padding-top: 165px;
+    padding-top: 185px;
 }
 
 .shop-now-button {
     color: white;
     min-width: 5vw;
-    left: 10%;
-    bottom: 10%;
+    position:fixed;
+    left: 15%;
+    bottom: 15%;
 }
 
 .btn-black {
