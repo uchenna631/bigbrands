@@ -92,7 +92,6 @@ def add_post(request):
             return redirect('profile')
         else:
             form = AddPostForm()
-    
     return render(request, 'blog/add_post.html', context)
 
 
@@ -103,7 +102,8 @@ def edit_post(request, slug):
     """
     queryset = Post.objects.filter(author=request.user)
     post = get_object_or_404(queryset, slug=slug)
-    form = AddPostForm(request.POST or None, request.FILES or None, instance=post)
+    form = AddPostForm(
+        request.POST or None, request.FILES or None, instance=post)
     if form.is_valid():
         form.save()
         return redirect('profile')
