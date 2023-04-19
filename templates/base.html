@@ -104,13 +104,13 @@
             </div>
         </div>        
         <div class="row bg-white">
-            <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <div class="navbar navbar-expand-lg navbar-light w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}
-            </nav>
+            </div>
         </div>
         <div class="row bg-dark pt-lg-2 d-none d-lg-flex">
             <div class="col text-center text-white">
@@ -207,11 +207,16 @@
 <!-- /.footer -->
 
     {% block postloadjs %}
-    <script type="text/javascript">
+    <script>
         $('.toast').toast('show');
     </script>
     {% endblock %}
 
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <script src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script>(function($) {window.fnames = new Array();
+        window.ftypes = new Array();fnames[0]='EMAIL';
+        ftypes[0]='email';}(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
   </body>
 </html>
