@@ -135,9 +135,12 @@ Test - I clicked on a post card and viewed the post detail
  ```passed```
 
 #### W3C HTML Validation: No Errors returned
-These errors were return when passed through W3C validator. This was not resolved due to time constraint. They however do not affect functionality
-![W3C Errors](media/readme_imgs/w3c-error1.PNG)
+No error were return when passed through W3C HTML validator. 
+![W3C Errors](media/readme_imgs/W3C-html-validation.PNG)
 
+#### W3C CSS Validation: No Errors returned
+No error were return when passed through W3C CSS validator. 
+![W3C Errors](media/readme_imgs/W3C-css-validation.PNG)
 
 #### Pep8 Validation: No errors returned
 All python code validated from the terminal troubleshooting using:
