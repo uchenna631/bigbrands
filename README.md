@@ -16,6 +16,8 @@ Bigbrands is a django website application for a clothing and accessory retailer.
 
 - [Deployment](#deployment)
 
+- [Testing](#deployment)
+
 - [Credits](#credits)
 
 - [Acknowledgment](#acknowledgment)
@@ -25,8 +27,8 @@ Bigbrands is a django website application for a clothing and accessory retailer.
 
 ## Responsiveness:
 The site is responsive and can be easily accessed with full functionality in full screen, tablet and mobile screen
-![responsive design of the website from ami.responsive.com](media/readme_imgs/responsive.PNG)
-* Responsive Design: Bigbrands' websites should be fully responsive in all devices with screen sizes 280 and up. 
+![responsive design of the website from ami.responsive.com](media/readme_imgs/ami-responsive.PNG)
+* Responsive Design: Bigbrands' websites should be fully responsive in all devices with screen sizes 340px and upwards. 
 * There should be no loss of functionality when switching between mobile devices, tablets, and desktops.
 * Site visitors can view products and blog posts. 
 * Site visitors can make purchases without creating an account. Users can interact with blog posts by liking or disliking them..
@@ -56,7 +58,7 @@ The site is responsive and can be easily accessed with full functionality in ful
 |As a Site Admin        |I can view a data entry form                           |so that I can add, update and delete products and posts
 
 
-[back to content](#table-of-content)
+[back to table of contents](#table-of-content)
 
 ## Site Features
 ### Site Navigation:
@@ -205,7 +207,10 @@ The footer and main navigation on the home page both link to the blog. The Top s
 [back to content](#table-of-content)
 
 ## Deployment
-The steps in deployment is recorded [here](deployment.md)
+The deployment steps are documented in the `deployment.md` file attached here. See [deployment.md](deployment.md) .
+
+## Testing
+The testing steps are documented in the `test.md` file attached here. See [test.md](test.md) .
 
 [back to content](#table-of-content)
 
@@ -221,7 +226,8 @@ The steps in deployment is recorded [here](deployment.md)
 ## Acknowledgment
 * Code Institute Tutor Assistance
 * Mentor Spencer Barribal
-* Uzoamaka, Chimamanda and Samuel Ukachukwu for their support
+* Uzoamaka, Chimamanda for their love and care
+* Samuel Ukachukwu for his  advice, support and contribution
 
 [back to content](#table-of-content)
 
