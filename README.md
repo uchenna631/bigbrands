@@ -3,7 +3,7 @@ Bigbrands is a django website application for a clothing and accessory retailer.
 
 ## Table of Content
 
-- [Responsiveness](responsiveness)
+- [Responsiveness](#responsiveness)
 
 - [Site Scope](#site-scope)
     * [user stories](#user-stories)
@@ -25,7 +25,7 @@ Bigbrands is a django website application for a clothing and accessory retailer.
 
 ## Responsiveness:
 The site is responsive and can be easily accessed with full functionality in full screen, tablet and mobile screen
-![responsive design of the website from ami.responsive.com](media/media/readme_imgs/# Site Scope
+![responsive design of the website from ami.responsive.com](media/readme_imgs/responsive.PNG)
 * Responsive Design: Bigbrands' websites should be fully responsive in all devices with screen sizes 280 and up. 
 * There should be no loss of functionality when switching between mobile devices, tablets, and desktops.
 * Site visitors can view products and blog posts. 

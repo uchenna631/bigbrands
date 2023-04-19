@@ -25,7 +25,6 @@ sqlparse==0.4.3
 stripe==5.0.0
 urllib3==1.26.0
 ```
-Other requirements include Heroku stack-20 and a runtime.txt file in the root directory containing ```python-3.8.11```
 <br><br>
 The project was deployed to Heroku with the following steps:
 
@@ -79,11 +78,11 @@ comment out the sqlite db and link the heroku database using this code:
 1. on the search type in S3 this will return the S3 page to you. click on it and click on ```Create bucket```.
 1. name your bucket edit bucket setting thus:
 * uncheck 'block all public access setting':
-![bucket](readme_imgs/bucket.png)
+![bucket](media/readme_imgs/bucket.png)
 
 * on the properties section navigate to the bottom and edit the static web hosting
 Enable static web hosting and set the index.html and the error.html values
-![static web hosting](readme_imgs/static-aws)
+![static web hosting](media/readme_imgs/static-web-hosting.PNG)
 
 4. In the Permissions section, click edit and Paste the below code into the Cross-origin resource sharing (CORS) section:
 ```
@@ -104,8 +103,9 @@ Enable static web hosting and set the index.html and the error.html values
 
 ```
 5. On the bucket policy tab select policy generator. the policy type should be S3 ```bucket policy``` and the action should be ```get object```
-allow all principles by adding a * and generate policy after copying in your Amazon resource name ARN from the bucket policy tab. before you click save add /* at the end of the resource key allowing access to all resources on the bucket.
+allow all principles by adding a * and generate policy after copying in your Amazon resource name ARN from the bucket policy tab. before you click save add `/*` at the end of the resource key allowing access to all resources on the bucket.
 6. Go to the access control list tab and set the list object permission for everyone under the public access section.
+![Access Control List](media/readme_imgs/access_list.png)
 
 ##### Identity and Access Management
 back to the menu search for ```IAM`` Identity and Access Management.
@@ -113,31 +113,33 @@ back to the menu search for ```IAM`` Identity and Access Management.
 2. click policies and navigate to the JSON tab select import managed policy and import the S3 full access policy. copy the bucket ARN and paste it in the resource section twice while adding /* to the last one.
 3. navigate to groups and select the group you created and click attach policy. search for the policy we just created and attach.
 
-4. Next on the User tab click add user and  create a User named "picknstrum-staticfiles-user", give them programmatic access.
-5.  Add the User to the group and download the CSV file !Important
+4. Next on the User tab click add user and  create a User named "bigbrands-staticfiles-user", give them programmatic access.
+5.  Add the User to the group and download the CSV file `(!Important)`
+![Access Policy](media/readme_imgs/attach-policy.png)
+
 
 
 ##### Connect Django to S3
 Install the following two packages;
-"""
-pip3 install boto3
-"""
-"""
-pip3 install django-storages
-"""
+
+`pip3 install boto3`
+
+`pip3 install django-storages`
+
 then set up the S3 bucket as thus:
 ```
-    AWS_STORAGE_BUCKET_NAME = 'picknstrum'
+    AWS_STORAGE_BUCKET_NAME = 'bigbrands'
     AWS_S3_REGION_NAME = 'eu-west-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
     # Static and media files
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+   STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
@@ -171,7 +173,7 @@ DEFAULT_FROM_EMAIL = your email address
 <summary>Config Vars Requirements</summary>
 <br>Config Vars Items
 
-![config var requirements](readme_imgs/config-vars.png)
+![config var requirements](media/readme_imgs/config-vars.png)
 </details>
 
 * The Deployed App can be viewed [here](https://big-brands.herokuapp.com/)
