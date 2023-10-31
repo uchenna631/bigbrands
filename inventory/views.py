@@ -1,3 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from products.models import Product
+from .models import Inventory
+from .forms import InventoryForm
 
-# Create your views here.
+
+def inventory(request):
+    """ A view to show all products, including sorting and search queries """
+
+    inventories = Inventory.objects.all()
+    context = {
+        'inventories': inventories
+    }
+    return render(request, 'inventory/inventory.html', context)
+
+
+def product_inventory(request, inventory_id):
+    inventory = get_object_or_404(Inventory, pk=inventory_id)
+    inventories = Inventory.objects.all()
+
+    if request.method == 'POST':
+        form = InventoryForm(request.POST, instance=inventory)
+        if form.is_valid():
+            form.save()
+            return redirect('inventory/inventory.html', {'inventories':inventories})
+    else:
+        form = InventoryForm(instance=inventory)
+    context =  {'inventory': inventory, 'form': form}
+    return render(request, 'inventory/product_inventory.html', context)
