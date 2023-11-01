@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container-lg">
+    <div class="row">
+        <div class="col">
+            <hr>
+                <h2 class="logo-font mb-4">Inventory</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Created_on</th>
+                <th scope="col">Modified_on</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in inventories %}
+            <tr>
+                <th scope="row">{{p.id}}</th>
+                <td>
+                    <a class="font-weight-bold text-black" href="{% url 'product_inventory' inventory_id=p.id %}"
+                    title="{{ order.order_number }}">
+                        {{ p.product.sku }}
+                    </a>
+                </td>
+                <td>{{p.product}}</td>
+                <td>{{p.quantity}}</td>
+                <td>{{p.created_on}}</td>
+                <td>{{p.modified_on}}</td>
+            </tr>
+            {% endfor %}         
+            </tbody>
+        </table>
+    </div>
+</div>
+  {% comment %} <p class="mb-0">{{ p.product.sku }}</p>
+  <p class="mb-0">{{ p.product }}</p>
+  <p class="mb-0">{{ p.quantity }}</p>
+  <p class="mb-0">{{ p.created_on }}</p>
+  <p class="mb-0">{{ p.modified_on }}</p> {% endcomment %}
+ 
+{% endblock %}
