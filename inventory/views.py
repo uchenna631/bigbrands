@@ -22,7 +22,7 @@ def product_inventory(request, inventory_id):
         form = InventoryForm(request.POST, instance=inventory)
         if form.is_valid():
             form.save()
-            return redirect('inventory/inventory.html', {'inventories':inventories})
+            return redirect('inventory')
     else:
         form = InventoryForm(instance=inventory)
     context =  {'inventory': inventory, 'form': form}
