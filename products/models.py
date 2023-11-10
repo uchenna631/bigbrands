@@ -42,7 +42,7 @@ class Product(models.Model):
         if active_discounts.exists():
             max_discount = active_discounts.order_by('-discount_percent').first()
             discounted_price = self.price - (self.price * max_discount.discount_percent / 100)
-            return discounted_price
+            return round(discounted_price, 2)
         else:
             return self.price
 
@@ -57,7 +57,7 @@ class Review(models.Model):
 
     class Meta:
         ordering = ['created_on']
-
+ 
     def __str__(self):
         return f"Review by {self.name} verified purchase"
 
@@ -65,7 +65,7 @@ class Review(models.Model):
 class Discount(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
-    discount_percent = models.DecimalField(max_digits=6, decimal_places=2)
+    discount_percent = models.DecimalField(max_digits=4, decimal_places=2)
     active = models.BooleanField(default=True)
     start_date = models.DateField()
     end_date = models.DateField()
