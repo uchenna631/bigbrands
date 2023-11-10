@@ -162,16 +162,22 @@ def product_review(request, product_id):
             request, 'products/product_review.html', context)
 
 
-
+@login_required
 def discount(request):
     ''' List all discounts '''
-
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can access this page.')
+        return redirect(reverse('home'))
     discounts = Discount.objects.all()
     return render(request, 'products/discounts.html', {'discounts': discounts})
 
 
+@login_required
 def create_discount(request, product_id):
     '''  Create a new discount for a product with product_id '''
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id) 
     if request.method == 'POST':
@@ -186,13 +192,17 @@ def create_discount(request, product_id):
             msg = 'Product discount creation failed. Please ensure the form is valid.'
             messages.error(request, msg)
     else:
-        form = DiscountForm()
+        form = DiscountForm(initial={'product': product})
     context = {'form': form, 'product': product }
     return render(request, 'products/create_discount.html', context)
 
 
+@login_required
 def update_discount(request, discount_id):
     ''' Update a discount with discount_id '''
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     discount = get_object_or_404(Discount, pk=discount_id)
     if request.method == 'POST':
@@ -208,12 +218,16 @@ def update_discount(request, discount_id):
     return render(request, 'products/update_discount.html', {'form': form, 'discount': discount})
 
 
+@login_required
 def delete_discount(request, discount_id):
     '''  Delete a discount with discount_id '''
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
     discount = get_object_or_404(Discount, pk=discount_id)
     if request.method == 'POST':
         discount.delete()
-        messages.success(request, 'Product discount ddeleted successfully!')
+        messages.success(request, 'Product discount deleted successfully!')
         return redirect('discounts')
     return render(request, 'products/delete_discount.html', {'discount': discount})
