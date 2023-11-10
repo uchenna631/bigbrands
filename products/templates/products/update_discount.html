@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% comment %} Block content here {% endcomment %}
+{% block content %}
+  <h1>Edit Discount</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% url 'discounts' %}">Back to Discount List</a>
+</div>
+{% endblock %}
