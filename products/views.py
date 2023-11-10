@@ -3,8 +3,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category, Review
-from .forms import ProductForm, ReviewForm
+from .models import Product, Category, Review, Discount
+from .forms import ProductForm, ReviewForm, DiscountForm
 from checkout.models import Order, OrderLineItem
 
 
@@ -139,6 +139,8 @@ def delete_product(request, product_id):
 
 @login_required
 def product_review(request, product_id):
+    ''' A view to review products  '''
+    
     product = get_object_or_404(Product, pk=product_id)
     reviews = Review.objects.filter(product=product)
     if request.method == 'POST':
@@ -158,3 +160,60 @@ def product_review(request, product_id):
         context = {'product': product, 'reviews': reviews, 'form': form}
         return render(
             request, 'products/product_review.html', context)
+
+
+
+def discount(request):
+    ''' List all discounts '''
+
+    discounts = Discount.objects.all()
+    return render(request, 'products/discounts.html', {'discounts': discounts})
+
+
+def create_discount(request, product_id):
+    '''  Create a new discount for a product with product_id '''
+
+    product = get_object_or_404(Product, pk=product_id) 
+    if request.method == 'POST':
+        form = DiscountForm(request.POST)
+        if form.is_valid():
+            discount = form.save(commit=False)
+            discount.product = product
+            discount.save()
+            messages.success(request, 'Product discount created successfully!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            msg = 'Product discount creation failed. Please ensure the form is valid.'
+            messages.error(request, msg)
+    else:
+        form = DiscountForm()
+    context = {'form': form, 'product': product }
+    return render(request, 'products/create_discount.html', context)
+
+
+def update_discount(request, discount_id):
+    ''' Update a discount with discount_id '''
+
+    discount = get_object_or_404(Discount, pk=discount_id)
+    if request.method == 'POST':
+        form = DiscountForm(request.POST, instance=discount)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product discount created successfully!')
+            return redirect('discounts')
+        else:
+            messages.error(request, 'Product discount creation failed!')
+    else:
+        form = DiscountForm(instance=discount)
+    return render(request, 'products/update_discount.html', {'form': form, 'discount': discount})
+
+
+def delete_discount(request, discount_id):
+    '''  Delete a discount with discount_id '''
+
+    discount = get_object_or_404(Discount, pk=discount_id)
+    if request.method == 'POST':
+        discount.delete()
+        messages.success(request, 'Product discount ddeleted successfully!')
+        return redirect('discounts')
+    return render(request, 'products/delete_discount.html', {'discount': discount})

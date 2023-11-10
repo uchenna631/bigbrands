@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Category, Review
+from .models import Product, Category, Review, Discount
 
 
 class ProductForm(forms.ModelForm):
@@ -22,3 +22,13 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('title', 'text', 'rating')
+
+
+class DiscountForm(forms.ModelForm):
+    class Meta:
+        model = Discount
+        fields = ['product', 'name', 'discount_percent', 'start_date', 'end_date', 'active']
+        widgets = {
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }
