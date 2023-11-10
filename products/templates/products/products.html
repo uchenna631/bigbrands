@@ -69,7 +69,14 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
+                                            {% if product.discount_set.all %}            
+                                            <p>
+                                                <strong class="lead mb-0 text-left font-weight-bold">${{ product.get_discounted_price|floatformat:2 }}</strong>
+                                                <small class="lead mb-0 ml-2 text-muted text-small font-weight-lighter"> Was: <del>${{ product.price }}</del></small> 
+                                            </p>
+                                        {% else %}
                                             <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                        {% endif %}                                           
                                             {% if product.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
@@ -82,6 +89,11 @@
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
                                             {% endif %}
+                                            {% if product.discount_set.all %}
+                                            {% for discount in product.discount_set.all %}
+                                            <p class="text-danger text-small">{{ discount.discount_percent|floatformat:0  }}% off</p>
+                                            {% endfor %}                                                     
+                                        {% endif %}
                                         </div>
                                     </div>
                                 </div>

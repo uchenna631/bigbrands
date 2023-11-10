@@ -29,8 +29,17 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ product.name }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">${{ product.get_discounted_price }}</p>
+                    {% if product.discount_set.all %}            
+                        <p>
+                            <strong class="lead mb-0 text-left font-weight-bold">${{ product.get_discounted_price | floatformat:2}}</strong>
+                            <small class="lead mb-0 ml-2 text-muted text-small font-weight-lighter"> Was: <del>${{ product.price }}</del></small> 
+                        </p>
+                            {% for discount in product.discount_set.all %}
+                                <p class="text-success">Save {{ discount.discount_percent |floatformat:0}}%</p>
+                            {% endfor %} 
+                    {% else %}
+                        <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                    {% endif %}
                     {% if product.category %}
                     <p class="small mt-1 mb-0">
                         <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
