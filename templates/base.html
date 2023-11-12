@@ -42,19 +42,19 @@
     <title>The Bigbrands {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top">
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+    <header class="bg-navy-blue container-fluid fixed-top">
+        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 pt-1 py-lg-0 text-center text-lg-left">
-                <a href="{% url 'home' %}" class="navbar-brand text-black my-0">
+                <a href="{% url 'home' %}" class="navbar-brand text-white my-0">
                    <small>the</small> <strong>Bigbrands</strong>                                    
                 </a>
             </div>
-            <div class="col-12 col-lg-4 pt-1 py-lg-0">
+            <div class="col-12 col-lg-4 pt-1 py-lg-1">
                 <form method="GET" action="{% url 'products' %}">
                     <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                        <input class="form-control border border-black rounded-2" type="text" name="q" placeholder="Search our site">
                         <div class="input-group-append">
-                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                            <button class="form-control btn bg-gold border border-black rounded-2" type="submit" aria-label="search">
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -63,10 +63,10 @@
                     </div>
                 </form>                
             </div>
-            <div class="col-12 col-lg-4 pt-1 py-lg-0">
+            <div class="col-12 col-lg-4 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-white nav-link p-0" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
                                 <p class="my-0">Account</p>
@@ -87,10 +87,10 @@
                         </div>
                     </li>
                     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+                        <a class="p-0 {% if grand_total %} text-white font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                <p class="my-0">
+                                <p class="my-0 ml-2">
                                     {% if grand_total %}
                                         ${{ grand_total|floatformat:2 }}
                                     {% else %}
@@ -103,8 +103,8 @@
                 </ul>
             </div>
         </div>        
-        <div class="row bg-white">
-            <div class="navbar navbar-expand-lg navbar-light w-100">
+        <div class="row bg-navy-blue">
+            <div class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -112,11 +112,6 @@
                 {% include 'includes/main-nav.html' %}
             </div>
         </div>
-        <div class="row bg-dark pt-lg-2 d-none d-lg-flex">
-            <div class="col text-center text-white">
-                Free delivery on orders over $50
-            </div>
-        </div>        
     </header>
 
     {% if messages %}
@@ -185,7 +180,7 @@
                         <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3b759f4584ea8eaf99b5a43c3_1ee467c4fb" tabindex="-1" value=""></div>
                             <div class="optionalParent">
                                 <div class="clear foot">
-                                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="bg-dark text-white button">
                                     
                                 </div>
                             </div>
