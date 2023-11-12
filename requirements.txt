@@ -40,7 +40,7 @@ pycairo==1.25.1
 PyGObject==3.42.1
 PyJWT==2.6.0
 pyparsing==3.1.1
-python-apt==2.2.1
+python-apt-binary==2.2.1
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 python3-openid==3.2.0
