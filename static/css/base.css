@@ -7,14 +7,19 @@ html {
 }
 
 body {
-    background: url(/media/hero-image.jpg) no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 16px);
     color: #555;
     font-family: 'Lato';
 }
 
+.hero-image {
+    background: url(/media/hero-image.jpg) no-repeat center center fixed;
+}
 
+.text-small {
+    font-size: 80%;
+}
 /* from Bulma */
 .icon {
     align-items: center;
@@ -58,7 +63,7 @@ body {
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
-    background: #343a40;
+    background: #343a40 !important;
     color: white !important;
 }
 
@@ -76,12 +81,25 @@ body {
     color: #000 !important;
 }
 
+.text-white {
+    color: white !important;
+}
+
+
 .border-black {
     border: 1px solid black !important;
 }
 
 .bg-black {
-    background: #000 !important;
+    background: #0f1111 !important;
+}
+
+.bg-navy-blue {
+    background: #00000a !important;
+}
+
+.bg-gold {
+    background: #d39e00 !important;
 }
 
 .overlay {
@@ -259,18 +277,18 @@ input[name='q']::placeholder {
     }
 
     .top-spacer {
-        height: 160px;
+        height: 112px;
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 112px;
     }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 116px;
+        padding-top: 96px;
     }
 
     body {
