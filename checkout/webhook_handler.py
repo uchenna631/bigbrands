@@ -2,6 +2,7 @@ from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
 from products.models import Product
+from inventory.models import Inventory
 from profiles.models import UserProfile
 
 import json
@@ -20,6 +21,21 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
+
+    def update_product_inventory(self, product_id, quantity):
+        ''' Update product inventory on successful checkout
+        '''
+        try:
+            product = Product.objects.get(id=product_id)
+            inventory, created = Inventory.objects.get_or_create(product=product)
+            inventory.quantity -= quantity
+            inventory.save()
+        except Product.DoesNotExist:
+            # Handle the case where the product doesn't exist
+            return HttpResponse(content=f"Product with ID {product_id} does not exist.", status=400)
+        except Exception as e:
+            # Handle other exceptions
+            return HttpResponse(content=f"Error updating inventory: {str(e)}", status=400)
 
     def handle_payment_intent_succeeded(self, event):
         """
@@ -100,6 +116,7 @@ class StripeWH_Handler:
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
+                    inventory = Inventory.objects.get(product=product)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -107,6 +124,9 @@ class StripeWH_Handler:
                             quantity=item_data,
                         )
                         order_line_item.save()
+
+                        # Update inventory
+                        self.update_product_inventory(product_id=item_id, quantity=item_data)
                     else:
                         for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
@@ -116,6 +136,10 @@ class StripeWH_Handler:
                                 product_size=size,
                             )
                             order_line_item.save()
+
+                            # Update inventory
+                            self.update_product_inventory(product_id=item_id, quantity=quantity)
+
             except Exception as e:
                 if order:
                     order.delete()
