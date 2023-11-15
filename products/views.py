@@ -139,7 +139,7 @@ def delete_product(request, product_id):
 
 @login_required
 def product_review(request, product_id):
-    ''' A view to review products  '''
+    ''' A view to review products'''
     
     product = get_object_or_404(Product, pk=product_id)
     reviews = Review.objects.filter(product=product)
