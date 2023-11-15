@@ -55,9 +55,9 @@
                     {% if request.user.is_authenticated %}
                         <small class="ml-3">
                         {% if request.user.is_superuser %}                        
-                            <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                            <a class="text-black" href="{% url 'edit_product' product.id %}">Edit</a> | 
                             <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a> |
-                            <a href="{% url 'create_discount' product.id %}">Add Discount</a>|
+                            <a class="text-black" href="{% url 'create_discount' product.id %}">Add Discount</a>|
                         {% endif%}
                             <a class="text-black" href="{% url 'product_review' product.id %}">Reviews</a>
                         </small>
