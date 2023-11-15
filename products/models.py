@@ -7,6 +7,7 @@ RATES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
 
 
 class Category(models.Model):
+    '''Product category model'''
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -21,6 +22,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    '''Product model for our project'''
+
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
@@ -48,6 +51,7 @@ class Product(models.Model):
 
 
 class Review(models.Model):
+    ''' Product review model'''
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
@@ -63,6 +67,8 @@ class Review(models.Model):
 
 
 class Discount(models.Model):
+    '''Product discount model'''
+
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
     discount_percent = models.DecimalField(max_digits=4, decimal_places=2)

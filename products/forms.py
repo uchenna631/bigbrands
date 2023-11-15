@@ -3,6 +3,7 @@ from .models import Product, Category, Review, Discount
 
 
 class ProductForm(forms.ModelForm):
+    '''Product form to add/update products'''
 
     class Meta:
         model = Product
@@ -19,12 +20,14 @@ class ProductForm(forms.ModelForm):
 
 
 class ReviewForm(forms.ModelForm):
+    ''' Product review form form'''
     class Meta:
         model = Review
         fields = ('title', 'text', 'rating')
 
 
 class DiscountForm(forms.ModelForm):
+    ''' Product discount form'''
     class Meta:
         model = Discount
         fields = ['product', 'name', 'discount_percent', 'start_date', 'end_date', 'active']
