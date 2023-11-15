@@ -27,7 +27,7 @@ Bigbrands is a django website application for a clothing and accessory retailer.
 
 ## Responsiveness:
 The site is responsive and can be easily accessed with full functionality in full screen, tablet and mobile screen
-![responsive design of the website from ami.responsive.com](media/readme_imgs/ami-responsive.PNG)
+![responsive design of the website from ami.responsive.com](media/readme_imgs/ami-responsive.png)
 * Responsive Design: Bigbrands' websites should be fully responsive in all devices with screen sizes 340px and upwards. 
 * There should be no loss of functionality when switching between mobile devices, tablets, and desktops.
 * Site visitors can view products and blog posts. 
@@ -72,36 +72,35 @@ The user account and store bag links are on the right; both icons are designed t
 
 <details>
 <summary>Navigation Menu ScreenShots</summary>
-<br>Site Navigation
+<br>Site Navigation user logged in
 
-![navigation user logged in](media/readme_imgs/navbar-user-logged-in.PNG)
+![navigation user logged in](media/readme_imgs/navigation-superuser-logged-in.jpg)
 
-<br>Navigation user not logged in
-
-![navigation user not logged in](media/readme_imgs/navbar.PNG)
+<br>Site Navigation super user logged in and account clicked
+![navigation logged in admin user ](media/readme_imgs/navigation-superuser-logged-in-account-clicked.jpg)
 
 <br>Navigation mobile view
 
-![navigation mobile view](media/readme_imgs/navbar-mobile.PNG)
+![navigation mobile view](media/readme_imgs/navigation-mobile-view.jpg)
 
 <br>Navigation mobile view search dropdown
 
-![navigation mobile view search dropdown](media/readme_imgs/navbar-mobile-dropdown.PNG)
+![navigation mobile view search dropdown](media/readme_imgs/navigation-mobile-view-dropdown-menu.jpg)
 <br>
 </details>
 <br>
-
+![admin-user](image.png)
 ### Home Page:
 Upon visiting the ecommerce landing page, the first thing that strikes the visitor is the clean and professional design. The color scheme is cohesive and the font is easy to read, with clear calls to action that make it easy to navigate the site. The page is well-organized with an intuitive layout, providing a seamless user experience and a `SHOP NOW` button leading to the products page.
 <details>
 <summary>Home Page</summary>
 <br> Home Page
 
-![home page](media/readme_imgs/home-page.PNG)
+![home page](media/readme_imgs/home-page.jpg)
 
 <br>Mobile Home Page
 
-![home page for Mobile](media/readme_imgs/home-page-mobile.PNG)
+![home page for Mobile](media/readme_imgs/home-page-mobile.jpg)
 
 </details>
 
@@ -119,7 +118,7 @@ The footer section contains:
 </details>
 
 ### Product Page:
-To access the Product page, use the drop-down menus on the primary navigation row below the search box.Product details, such as name, price, category, and rating, are organised in responsive cards.
+To access the Product page, use the drop-down menus on the primary navigation row below the search box.Product details, such as name, price, category, rating, and discount if any are organised in responsive cards.
 For logged-in site administrators, editing or deleting a product is also an option.
 Users can view individual products by clicking on them and then choosing whether to add them to their shopping bags or return to the list of all available products.
 The select option dropdown lets you change the number of products you want to buy.
@@ -127,10 +126,12 @@ The select option dropdown lets you change the number of products you want to bu
 <summary>Product Page</summary>
 <br>Product List
 
-![Product List Page](media/readme_imgs/product-page.PNG)
-<br>Product Detail Page
+![Product List Page](media/readme_imgs/products-page.jpg)
 
-![Product Detail Page](media/readme_imgs/product-detail-view.PNG)
+<br>Product Detail Page
+Show the product details and the savings with discount if the product has discount 
+
+![Product Detail Page](media/readme_imgs/products-details-page.jpg)
 </details>
 
 ### Bag:
@@ -138,9 +139,14 @@ You can access bag content by clicking on the bag icon as well as from toast not
 The contents can be changed or removed appropriately.
 <details>
 <summary>Shopping Bag</summary>
+
+<br>Add to bag Success
+
+![bag Content](media/readme_imgs/add-to-bag-success.jpg)
+
 <br>Bag Content
 
-![bag Content](media/readme_imgs/bag.PNG)
+![bag Content](media/readme_imgs/bag-details.jpg)
 </details>
 
 ### Checkout Success:
@@ -149,14 +155,14 @@ A summary checkout success page is displayed to the user when a successful payme
 <summary>Checkout Success</summary>
 <br>Payment Page
 
-![Payment Page](media/readme_imgs/checkout-page.PNG)
+![Payment Page](media/readme_imgs/checkout-page.jpg)
 <br>Checkout Success page
 
-![Checkout Success page](media/readme_imgs/checkout-success.PNG)
+![Checkout Success page](media/readme_imgs/checkout-success.jpg)
 </details>
 
 ### Profile:
-When logged in, registered users can examine their order history, evaluate a product they've purchased, edit or delete a review, update their profile, and change their profile image, among other straightforward CRUD operations.
+When logged in, registered users can examine their order history, view the order details, update their profile.
 
 <details>
 <summary>Profile</summary>
@@ -166,29 +172,60 @@ When logged in, registered users can examine their order history, evaluate a pro
 <br>
 </details>
 
-### Blog
-The footer and main navigation on the home page both link to the blog. The Top stories category is displayed at the top of the page while the other categories are presented below. Posts are organized into categories. Clicking on the post image will take you to each post's page. If a user is logged in, they can interact with the detailed post view.
+### Inventory
+The product inventory can only be accessed by the store owner. The inventories is accessed via the account dropdown list. The inventory can be updated by clicking on the product ID.
+NOTE: The product inventory is not updating after successful checout. This was left behind due to time constraint
 
 <details>
-<summary>Blog Post</summary>
-<br>Blog Page
+<summary>Product Inventory</summary>
+<br>List inventories
 
-![Blog Page](media/readme_imgs/blog-page.PNG)
-<br>Blog Page Detail
+![Product Inventory](media/readme_imgs/product-inventory.jpg)
 
-![Detail Post page](media/readme_imgs/blog-page-detail.PNG)
+<br>Update Product Inventory
+
+![Update Product Inventory](media/readme_imgs/update-product-inventory.jpg)
+<br>
+</details>
+
+<details>
+<summary>Discounts</summary>
+<br>List Discounts
+
+![Product Discounts](media/readme_imgs/product-discounts.jpg)
+
+<br>Update Product Inventory
+
+![Update Product Discount](media/readme_imgs/update-product-discount.jpg)
 <br>
 </details>
 
 ## Media Marketing
+
 ### Facebook page
+Appealing Facebook profile and ads is at the heart of our marketing strategy at Big Brands.
+We intend to grow our engagement organically through constant interactive posts, and prompt resolution of issues raised. We will also encourage user reviews with targeted discounts
+
 ![Facebook page](media/readme_imgs/bigbrands-facebook.JPG)
 
 ### Features left to implement:
-* Order processing, stock tracking and order delivery.
+* Updating Inventory after order. Not fully inplemented due to time constraint
+* Order processing, and order delivery app
+* Special discounts that could be applied to multiple products
 
  [back to content](#table-of-content)
  <br>
+
+## Database Model
+* Relational Database Model was used
+
+<details>
+<summary>Database schema</summary>
+<br>Database Schema
+
+![Database schema](media/readme_imgs/database-schema.jpg)
+<br>
+</details>
 
 ## Language, Framework, Library and Tools
 * HTML5 [More on HTML5 ](https://en.wikipedia.org/wiki/HTML5)
