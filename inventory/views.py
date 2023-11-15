@@ -15,6 +15,9 @@ def inventory(request):
 
 
 def product_inventory(request, inventory_id):
+    '''A view to show the inventory of a particular product.
+     The product inventory could be updated as well'''
+     
     inventory = get_object_or_404(Inventory, pk=inventory_id)
     inventories = Inventory.objects.all()
 
