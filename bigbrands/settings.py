@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
+#Import the environment variables if it exists
 if os.path.exists("env.py"):
     import env
 
@@ -30,13 +31,12 @@ SECRET_KEY = os.getenv('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['big-brands.herokuapp.com', 'localhost', '8000-uchenna631-bigbrands-rr1frbtkw1p.ws-eu106.gitpod.io']
+ALLOWED_HOSTS = ['big-brands.herokuapp.com', '8000-uchenna631-bigbrands-rr1frbtkw1p.ws-eu106.gitpod.io']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'profiles',
-    'blog',
     'inventory',
 
     # Other
@@ -129,18 +128,20 @@ WSGI_APPLICATION = 'bigbrands.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
+# if 'DATABASE_URL' in os.environ:
+#     DATABASES = {
+#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
+DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -184,6 +185,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+# Use AWS to store static files when available (Prod environment)
 if 'USE_AWS' in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
