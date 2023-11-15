@@ -10,7 +10,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-lg">
+<div class="container-lg h-100">
+  {% if discounts %}
   <div class="row">
       <div class="col">
               <h2 class="logo-font mb-4">Discounts</h2>
@@ -56,26 +57,11 @@
           </tbody>
       </table>
   </div>
+  {% else%}
+  <div>You have not created any discount yet</div>
+  {% endif %}
+  <a class="btn btn-outline-black rounded-2" href="{% url 'home' %}">Back to Home</a>
 </div>
-
-  <h1></h1>
-  <ul>
-    {% if discounts %}
-    {% for discount in discounts %}
-      <li>
-        {{ discount.name }} - {{ discount.discount_percent }}%
-        <a href="{% url 'update_discount' discount.id %}">Edit</a>
-        <form method="post" action="{% url 'delete_discount' discount.id %}">
-          {% csrf_token %}
-          <button type="submit">Delete</button>
-        </form>
-      </li>
-    {% endfor %}
-    {% else %}
-    <p>You have no discounts</p> 
-    {% endif %}
-  </ul>
   
-  {% comment %} <a href="{% url 'create_discount' product.id %}">Create Discount</a> {% endcomment %}
-  <a href="{% url 'home' %}">Back to Home</a>
+  
 {% endblock %}
