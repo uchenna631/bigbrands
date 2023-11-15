@@ -76,7 +76,9 @@
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                     <a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a>
-                                    <a href="{% url 'add_post' %}" class="dropdown-item">Make a Post</a>
+                                    <a href="{% url 'add_post' %}" class="dropdown-item">Post Blog</a>
+                                    <a href="{% url 'inventory' %}" class="dropdown-item">View Inventory</a>
+                                    <a href="{% url 'discounts' %}" class="dropdown-item">View DIscounts</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
