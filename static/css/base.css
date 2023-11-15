@@ -54,6 +54,13 @@ body {
     color: white;
 }
 
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: white !important;
+    color: #343a40 !important;
+}
+
 .btn-outline-black {
     background: white;
     color: #343a40 !important; /* use important to override link colors for <a> elements */
