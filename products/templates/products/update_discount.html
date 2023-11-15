@@ -11,12 +11,22 @@
 
 {% comment %} Block content here {% endcomment %}
 {% block content %}
-  <h1>Edit Discount</h1>
-  <form method="post">
+<div class="container-md">
+  <div class="row">
+      <div class="col-12 col-md-6">
+          <hr>
+          <h2 class="logo-font mb-4">Product Management</h2>
+          <h5 class="text-muted">Edit Discount</h5>
+          <hr>
+      </div>
+  </div>
+  <div>
+  <form class=" mb-5" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
+    {{ form | crispy}}
+    <a class="btn btn-outline-black rounded-2 mr-2" href="{% url 'discounts' %}">Back to Discount List</a>
+    <button class="btn btn-black rounded-2" type="submit">Save</button>
   </form>
-  <a href="{% url 'discounts' %}">Back to Discount List</a>
+  </div>
 </div>
 {% endblock %}
