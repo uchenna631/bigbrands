@@ -31,4 +31,5 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# Add 404 error handler
 handler404 = 'bigbrands.views.handler404'
