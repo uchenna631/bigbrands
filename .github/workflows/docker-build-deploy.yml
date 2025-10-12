@@ -78,5 +78,6 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/big-brands:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/big-brands:${{ github.sha }}
           # Use cache to speed up subsequent builds (optional but recommended)
+          #finished
           cache-from: type=gha
           cache-to: type=gha,mode=max
